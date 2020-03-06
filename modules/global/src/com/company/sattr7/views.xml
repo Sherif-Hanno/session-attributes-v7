@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="sattr7_BusinessUser" name="business-user-with-sysuser" extends="_local">
+        <property name="sysUser" view="_minimal">
+            <property name="firstName"/>
+            <property name="lastName"/>
+        </property>
+        <property name="company" view="_local"/>
+    </view>
+</views>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.sattr7.web.screens.businessuser">
+    <data>
+        <instance id="businessUserDc"
+                  class="com.company.sattr7.entity.BusinessUser"
+                  view="business-user-with-sysuser">
+            <loader/>
+        </instance>
+        <collection id="sysUsersDc" class="com.haulmont.cuba.security.entity.User" view="_minimal">
+            <loader id="sysUsersLc">
+                <query>
+                    <![CDATA[select e from sec$User e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="companiesDc" class="com.company.sattr7.entity.Company" view="_minimal">
+            <loader id="companiesLc">
+                <query>
+                    <![CDATA[select e from sattr7_Company e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="businessUserDc">
+            <column width="250px">
+                <lookupPickerField id="sysUserField" optionsContainer="sysUsersDc" property="sysUser"/>
+                <lookupPickerField id="companyField" optionsContainer="companiesDc" property="company">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="open" type="picker_open"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </lookupPickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
