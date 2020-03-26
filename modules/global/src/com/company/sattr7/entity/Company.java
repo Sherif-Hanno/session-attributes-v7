@@ -19,9 +19,20 @@ public class Company extends StandardEntity {
     @Column(name = "NAME", nullable = false)
     protected String name;
 
+    @Column(name = "LEGAL_NUMBER")
+    protected String legalNum;
+
     @Lob
     @Column(name = "ADDRESS")
     protected String address;
+
+    public String getLegalNum() {
+        return legalNum;
+    }
+
+    public void setLegalNum(String legalNum) {
+        this.legalNum = legalNum;
+    }
 
     public String getAddress() {
         return address;

@@ -4,6 +4,8 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
+import com.haulmont.cuba.core.global.AppBeans;
+import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.security.entity.User;
 
 import javax.persistence.*;
@@ -25,6 +27,15 @@ public class BusinessUser extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COMPANY_ID")
     protected Company company;
+
+    public static BusinessUser ofUser(User user) {
+        return AppBeans.get(DataManager.class)
+                .load(BusinessUser.class)
+                .query("select e from sattr7_BusinessUser e where e.sysUser = :user")
+                .parameter("user", user)
+                .optional()
+                .orElse(null);
+    }
 
     public Company getCompany() {
         return company;

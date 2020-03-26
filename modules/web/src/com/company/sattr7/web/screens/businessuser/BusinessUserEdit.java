@@ -1,7 +1,7 @@
 package com.company.sattr7.web.screens.businessuser;
 
-import com.haulmont.cuba.gui.screen.*;
 import com.company.sattr7.entity.BusinessUser;
+import com.haulmont.cuba.gui.screen.*;
 
 
 /**

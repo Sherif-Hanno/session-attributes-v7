@@ -27,6 +27,7 @@ create table SATTR7_COMPANY (
     DELETED_BY varchar(50),
     --
     NAME varchar(255) not null,
+    LEGAL_NUMBER varchar(255),
     ADDRESS longvarchar,
     --
     primary key (ID)
